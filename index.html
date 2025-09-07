@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cronograma de Convocatoria IUSKALLPA – Septiembre 2025</title>
+
+  <!-- Fuente Cinzel -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#000000;
+      --ink:#111111;
+      --muted:#666666;
+      --bg:#ffffff;
+      --zebra:#f2f2f2;
+      --ok:#000000;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;
+      background:var(--bg);color:var(--ink);
+      font:16px/1.6 'Cinzel', serif;
+      position: relative;
+    }
+
+    /* Marca de agua */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReF_M8SXlcM9Zxa4duzwfsil5a9M7DZWKVkw&s") no-repeat center center;
+      background-size: 600px;
+      opacity: 0.07;
+      z-index: -1;
+    }
+
+    .wrap{max-width:1000px;margin:auto;padding:24px;position:relative}
+    
+    header{
+      border-left:6px solid var(--brand);
+      padding:10px 14px;
+      background:linear-gradient(90deg, #f9f9f9, #ffffff);
+      margin-bottom:18px;
+      position:relative;
+    }
+    h1{margin:0 0 4px;font-size:1.8rem;color:var(--brand)}
+    .subtitle{color:var(--muted);font-size:1rem}
+    .badge{
+      display:inline-block;padding:2px 8px;border-radius:999px;
+      background:var(--brand);color:#fff;font-size:.8rem;margin-left:6px
+    }
+
+    .toolbar{display:flex;gap:8px;align-items:center;margin:10px 0 18px;flex-wrap:wrap}
+    .btn{
+      appearance:none;border:1px solid var(--brand);color:#fff;background:var(--brand);
+      padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600;
+      text-decoration:none;display:inline-block
+    }
+    .btn.alt{background:#fff;color:var(--brand)}
+    .btn:active{transform:translateY(1px)}
+
+    table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:12px;border:1px solid #d1d5db;margin-top:20px}
+    thead th{
+      background:var(--brand);color:#fff;text-align:left;padding:12px 14px;font-weight:700
+    }
+    tbody td{padding:12px 14px;border-top:1px solid #e5e7eb;background:#fff;vertical-align:top}
+    tbody tr:nth-child(even) td{background:#f2f2f2}
+    .etapa{font-weight:600}
+    .rango{white-space:nowrap}
+    .tag{display:inline-block;border:1px solid #d1d5db;border-radius:8px;padding:2px 8px;margin:2px 6px 0 0;font-size:.85rem;color:#333;background:#fff}
+    .final{color:var(--ok);font-weight:700}
+    .note{margin-top:10px;color:var(--muted);font-size:.9rem}
+    .foot{margin-top:18px;color:var(--muted);font-size:.85rem;text-align:center}
+
+    .social{
+      margin-top:30px;
+      padding:16px;
+      border-top:1px solid #ddd;
+      text-align:center;
+    }
+    .social h2{
+      font-size:1.2rem;
+      margin-bottom:15px;
+      color:var(--brand);
+    }
+    .social a{
+      display:inline-flex;
+      align-items:center;
+      margin:8px 12px;
+      color:var(--brand);
+      text-decoration:none;
+      font-weight:600;
+      font-size:1rem;
+    }
+    .social a img{
+      width:26px;
+      height:26px;
+      margin-right:8px;
+      border-radius:4px;
+    }
+    .social a:hover{color:#444}
+    
+    @media print{
+      .toolbar{display:none}
+      header{border:0;background:#fff;padding:0}
+      h1{font-size:1.3rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Cronograma de Convocatoria IUSKALLPA – Septiembre 2025
+        <span class="badge">Resultados: 27/09/2025</span>
+      </h1>
+      <div class="subtitle">Proceso de 15 días: Fase Específica por Comisión → Fase General (entrevista y valores institucionales).</div>
+    </header>
+
+    <div class="toolbar">
+      <button class="btn" onclick="window.print()">Imprimir / Guardar en PDF</button>
+      <a class="btn" href="https://forms.gle/wNbYWowLfpLvJdFh9" target="_blank">Ir a la Encuesta</a>
+      <a class="btn alt" href="https://drive.google.com/file/d/1Pn2afLkWcLJypDRKOZ1kX16xu5OdO-b3/view?usp=drive_link" target="_blank">Ver Reglamento</a>
+    </div>
+
+    <table id="cronograma">
+      <thead>
+        <tr>
+          <th>Etapa</th>
+          <th>Inicio</th>
+          <th>Fin</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="etapa">Recepción de expedientes</td>
+          <td class="rango">12/09/2025</td>
+          <td class="rango">16/09/2025</td>
+          <td>
+            <span class="tag">Vía formulario</span>
+            <span class="tag">Formato PDF</span>
+            <span class="tag">Horario 00:00–23:59</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="etapa">Revisión de expedientes y requisitos específicos por comisión</td>
+          <td class="rango">17/09/2025</td>
+          <td class="rango">20/09/2025</td>
+          <td>
+            <span class="tag">Filtro técnico por comisión</span>
+            <span class="tag">Preselección</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="etapa">Entrevistas personales (Fase General)</td>
+          <td class="rango">21/09/2025</td>
+          <td class="rango">24/09/2025</td>
+          <td>
+            <span class="tag">Motivación & ética</span>
+            <span class="tag">Trabajo interdisciplinario</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="etapa">Deliberación y preparación de resultados</td>
+          <td class="rango">25/09/2025</td>
+          <td class="rango">26/09/2025</td>
+          <td><span class="tag">Acta de calificaciones</span></td>
+        </tr>
+        <tr>
+          <td class="etapa final">Publicación de resultados</td>
+          <td class="rango">27/09/2025</td>
+          <td class="rango">27/09/2025</td>
+          <td><span class="tag">Medios oficiales IUSKALLPA</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="note">* Las fechas están expresadas en formato DD/MM/AAAA (zona horaria: América/Lima). Cualquier ajuste será comunicado por los canales oficiales.</p>
+    <p class="foot">IUSKALLPA – Círculo de Estudios Jurídicos y Filosofía del Derecho, UNSA.</p>
+
+    <div class="social">
+      <h2>Para mayor información estas son nuestras redes sociales</h2>
+      <a href="https://www.facebook.com/profile.php?id=100088885685421" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMW9AB13KyfzyL04pPQ6MNSttPFG3O06v9ig&s" alt="Facebook"> Facebook
+      </a>
+      <a href="https://www.instagram.com/iuskallpa?igsh=MWRmenlhN3YzNDZ1" target="_blank">
+        <img src="https://1000marcas.net/wp-content/uploads/2019/11/Emblem-Instagram.jpg" alt="Instagram"> Instagram
+      </a>
+      <a href="mailto:kallpachas@gmail.com">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0JwUVS-cSOFbnCkKXY4b8yHx5Rbuf4Vd9Mw&s" alt="Correo"> kallpachas@gmail.com
+      </a>
+    </div>
+  </div>
+</body>
+</html>
