@@ -25,20 +25,6 @@
       position: relative;
     }
 
-    /* Marca de agua */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReF_M8SXlcM9Zxa4duzwfsil5a9M7DZWKVkw&s") no-repeat center center;
-      background-size: 600px;
-      opacity: 0.07;
-      z-index: -1;
-    }
-
     .wrap{max-width:1000px;margin:auto;padding:24px;position:relative}
     
     header{
@@ -105,12 +91,6 @@
     }
     .social a:hover{color:#444}
     
-    @media print{
-      .toolbar{display:none}
-      header{border:0;background:#fff;padding:0}
-      h1{font-size:1.3rem}
-    }
-
     footer {
       margin-top:40px;
       padding:20px;
@@ -125,193 +105,111 @@
       display:block;
       color:#333;
     }
+
+    /* Visor */
+    #visorContainer{display:none;margin-top:20px}
+    #visorTitle{font-size:1.4rem;font-weight:700;margin-bottom:10px}
+    #visorPDF{width:100%;height:600px;border:1px solid #ccc;border-radius:8px}
+
+    /* Menú hamburguesa */
+    .menu-container{
+      position:absolute;top:10px;right:10px;
+    }
+    .hamburger{
+      background:#000;color:#fff;border:none;padding:10px;border-radius:6px;
+      cursor:pointer;font-size:1.2rem
+    }
+    .dropdown{
+      display:none;position:absolute;right:0;margin-top:8px;
+      background:#fff;border:1px solid #ccc;border-radius:8px;min-width:260px;z-index:1000
+    }
+    .dropdown ul{list-style:none;margin:0;padding:0}
+    .dropdown li{border-bottom:1px solid #eee}
+    .dropdown li a{
+      display:block;padding:10px 14px;text-decoration:none;color:#333
+    }
+    .dropdown li a:hover{background:#f2f2f2}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-   <div style="width:100%; height:200px; overflow:hidden; margin-bottom:12px;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReF_M8SXlcM9Zxa4duzwfsil5a9M7DZWKVkw&s" 
-         alt="Logo IUS KALLPA"
-         style="width:100%; height:100%; object-fit:cover;">
-  </div>
+      <h1>Cronograma de Convocatoria IUSKALLPA – Septiembre 2025
+        <span class="badge">Resultados: 27/09/2025</span>
+      </h1>
+      <div class="subtitle">
+        Proceso de 15 días: Fase Específica por Comisión → Fase General (entrevista y valores institucionales).
+      </div>
 
-  <h1>Cronograma de Convocatoria IUSKALLPA – Septiembre 2025
-    <span class="badge">Resultados: 27/09/2025</span>
-  </h1>
-  <div class="subtitle">
-    Proceso de 15 días: Fase Específica por Comisión → Fase General (entrevista y valores institucionales).
-  </div>
-</header>
+      <!-- Menú hamburguesa -->
+      <div class="menu-container">
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <div class="dropdown" id="dropdownMenu">
+          <ul>
+            <li><a href="#" onclick="verPDF('Reconocimiento de Ius Kallpa por Resolución Decanal','https://drive.google.com/file/d/1Z0XhADCB58nvIEiZGLn_q52afcaokJ78/preview')">Reconocimiento de Ius Kallpa por Resolución Decanal</a></li>
+            <li><a href="#" onclick="verPDF('Entrevista con Eugenio Raúl Zaffaroni – Revista Yachaq','https://drive.google.com/file/d/1Th7k28JfHTLPERT6FsOVy65WAPlIH-7C/preview')">Entrevista con Eugenio Raúl Zaffaroni – Revista Yachaq</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
 
-    <div class="toolbar">
+    <!-- Botones -->
+    <div class="toolbar" id="toolbar">
       <button class="btn" onclick="window.print()">Imprimir / Guardar en PDF</button>
-      <a class="btn" href="https://forms.gle/wNbYWowLfpLvJdFh9" target="_blank">Ficha de Inscripción</a>
-      <a class="btn alt" href="https://drive.google.com/file/d/1Pn2afLkWcLJypDRKOZ1kX16xu5OdO-b3/view?usp=sharing" target="_blank">Ver Reglamento</a>
+      <a class="btn" href="#" onclick="verPDF('Ficha de Inscripción','https://docs.google.com/forms/d/e/1FAIpQLSfzRk0u1qVtbd7ZIXY0dXKkD1/viewform?embedded=true')">Ficha de Inscripción</a>
+      <a class="btn alt" href="#" onclick="verPDF('Reglamento','https://drive.google.com/file/d/1Pn2afLkWcLJypDRKOZ1kX16xu5OdO-b3/preview')">Ver Reglamento</a>
     </div>
 
-    <table id="cronograma">
-      <thead>
-        <tr>
-          <th>Etapa</th>
-          <th>Inicio</th>
-          <th>Fin</th>
-          <th>Notas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="etapa">Recepción de expedientes</td>
-          <td class="rango">12/09/2025</td>
-          <td class="rango">16/09/2025</td>
-          <td>
-            <span class="tag">Vía formulario</span>
-            <span class="tag">Formato PDF</span>
-            <span class="tag">Horario 00:00–23:59</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="etapa">Revisión de expedientes y requisitos específicos por comisión</td>
-          <td class="rango">17/09/2025</td>
-          <td class="rango">20/09/2025</td>
-          <td>
-            <span class="tag">Filtro técnico por comisión</span>
-            <span class="tag">Preselección</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="etapa">Entrevistas personales (Fase General)</td>
-          <td class="rango">21/09/2025</td>
-          <td class="rango">24/09/2025</td>
-          <td>
-            <span class="tag">Motivación & ética</span>
-            <span class="tag">Trabajo interdisciplinario</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="etapa">Deliberación y preparación de resultados</td>
-          <td class="rango">25/09/2025</td>
-          <td class="rango">26/09/2025</td>
-          <td><span class="tag">Acta de calificaciones</span></td>
-        </tr>
-        <tr>
-          <td class="etapa final">Publicación de resultados</td>
-          <td class="rango">27/09/2025</td>
-          <td class="rango">27/09/2025</td>
-          <td><span class="tag">Medios oficiales IUSKALLPA</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- Cronograma -->
+    <div id="cronogramaContainer">
+      <table id="cronograma">
+        <thead>
+          <tr>
+            <th>Etapa</th><th>Inicio</th><th>Fin</th><th>Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="etapa">Recepción de expedientes</td><td>12/09/2025</td><td>16/09/2025</td><td><span class="tag">Vía formulario</span><span class="tag">Formato PDF</span></td></tr>
+          <tr><td class="etapa">Revisión de expedientes</td><td>17/09/2025</td><td>20/09/2025</td><td><span class="tag">Filtro técnico</span></td></tr>
+          <tr><td class="etapa">Entrevistas personales</td><td>21/09/2025</td><td>24/09/2025</td><td><span class="tag">Motivación & ética</span></td></tr>
+          <tr><td class="etapa">Deliberación</td><td>25/09/2025</td><td>26/09/2025</td><td><span class="tag">Acta de calificaciones</span></td></tr>
+          <tr><td class="etapa final">Publicación de resultados</td><td>27/09/2025</td><td>27/09/2025</td><td><span class="tag">Medios oficiales</span></td></tr>
+        </tbody>
+      </table>
+    </div>
 
-    <p class="note">* Las fechas están expresadas en formato DD/MM/AAAA (zona horaria: América/Lima). Cualquier ajuste será comunicado por los canales oficiales.</p>
-    <p class="foot">IUSKALLPA – Investigación Jurídica.</p>
+    <!-- Visor -->
+    <div id="visorContainer">
+      <div id="visorTitle"></div>
+      <iframe id="visorPDF"></iframe>
+    </div>
 
     <div class="social">
       <h2>Para mayor información estas son nuestras redes sociales</h2>
-      <a href="https://www.facebook.com/profile.php?id=100088885685421" target="_blank">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMW9AB13KyfzyL04pPQ6MNSttPFG3O06v9ig&s" alt="Facebook"> Facebook
-      </a>
-      <a href="https://www.instagram.com/iuskallpa?igsh=MWRmenlhN3YzNDZ1" target="_blank">
-        <img src="https://1000marcas.net/wp-content/uploads/2019/11/Emblem-Instagram.jpg" alt="Instagram"> Instagram
-      </a>
-      <a href="mailto:kallpachas@gmail.com">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0JwUVS-cSOFbnCkKXY4b8yHx5Rbuf4Vd9Mw&s" alt="Correo"> kallpachas@gmail.com
-      </a>
+      <a href="https://www.facebook.com/profile.php?id=100088885685421" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMW9AB13KyfzyL04pPQ6MNSttPFG3O06v9ig&s"> Facebook</a>
+      <a href="https://www.instagram.com/iuskallpa?igsh=MWRmenlhN3YzNDZ1" target="_blank"><img src="https://1000marcas.net/wp-content/uploads/2019/11/Emblem-Instagram.jpg"> Instagram</a>
+      <a href="mailto:kallpachas@gmail.com"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0JwUVS-cSOFbnCkKXY4b8yHx5Rbuf4Vd9Mw&s"> kallpachas@gmail.com</a>
     </div>
 
-    <h2>Biblioteca de Documentos</h2>
-
-<div class="sidebar">
-
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAccordion()">📚 Reconocimientos y Publicaciones</button>
-    <div class="accordion-content">
-      <ul>
-        <li>
-          <a href="#" onclick="verPDF('https://drive.google.com/file/d/1Z0XhADCB58nvIEiZGLn_q52afcaokJ78/preview')">
-            Reconocimiento de Ius Kallpa por Resolución Decanal
-          </a>
-        </li>
-        <li>
-          <a href="#" onclick="verPDF('https://drive.google.com/file/d/1Th7k28JfHTLPERT6FsOVy65WAPlIH-7C/preview')">
-            Entrevista con Eugenio Raúl Zaffaroni – Revista Yachaq
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<iframe id="visorPDF" width="100%" height="600" style="border:1px solid #ccc; margin-top:15px;"></iframe>
-
-<style>
-  .sidebar {
-    position: fixed;
-    right: 0;
-    top: 100px;
-    width: 280px;
-    z-index: 1000;
-  }
-  .accordion {
-    margin: 10px;
-  }
-  .accordion-btn {
-    width: 100%;
-    text-align: left;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    background: #000;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.3s;
-  }
-  .accordion-btn:hover {
-    background: #333;
-  }
-  .accordion-content {
-    display: none;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-top: none;
-    background: #f9f9f9;
-  }
-  .accordion-content ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .accordion-content li {
-    margin: 8px 0;
-  }
-  .accordion-content a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-  }
-  .accordion-content a:hover {
-    text-decoration: underline;
-  }
-</style>
-
-<script>
-  function toggleAccordion() {
-    const content = document.querySelector('.accordion-content');
-    content.style.display = (content.style.display === "block") ? "none" : "block";
-  }
-
-  function verPDF(url) {
-    document.getElementById('visorPDF').src = url;
-  }
-</script>
-</div>
     <footer>
       <span class="quote">“El derecho se transforma constantemente. Si no sigues sus pasos, serás cada día un poco menos abogado.” – Eduardo Couture</span><br>
       &copy; 2025 IUS KALLPA – Todos los derechos reservados.
     </footer>
   </div>
+
+<script>
+  function toggleMenu(){
+    const menu=document.getElementById('dropdownMenu');
+    menu.style.display=(menu.style.display==='block')?'none':'block';
+  }
+
+  function verPDF(titulo,url){
+    document.getElementById('cronogramaContainer').style.display='none';
+    document.getElementById('toolbar').style.display='none';
+    document.getElementById('visorContainer').style.display='block';
+    document.getElementById('visorTitle').textContent=titulo;
+    document.getElementById('visorPDF').src=url;
+  }
+</script>
 </body>
 </html>
-
