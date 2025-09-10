@@ -110,18 +110,17 @@
     #visorContainer{display:none;margin-top:20px}
     #visorTitle{font-size:1.4rem;font-weight:700;margin-bottom:10px}
     #visorPDF{width:100%;height:600px;border:1px solid #ccc;border-radius:8px}
+    #volverBtn{margin-bottom:12px}
 
     /* Menú hamburguesa */
-    .menu-container{
-      position:absolute;top:10px;right:10px;
-    }
+    .menu-container{position:relative;display:inline-block}
     .hamburger{
-      background:#000;color:#fff;border:none;padding:10px;border-radius:6px;
-      cursor:pointer;font-size:1.2rem
+      background:#fff;color:#000;border:1px solid #000;padding:10px 14px;
+      border-radius:10px;cursor:pointer;font-weight:600
     }
     .dropdown{
       display:none;position:absolute;right:0;margin-top:8px;
-      background:#fff;border:1px solid #ccc;border-radius:8px;min-width:260px;z-index:1000
+      background:#fff;border:1px solid #ccc;border-radius:8px;min-width:280px;z-index:1000
     }
     .dropdown ul{list-style:none;margin:0;padding:0}
     .dropdown li{border-bottom:1px solid #eee}
@@ -134,22 +133,18 @@
 <body>
   <div class="wrap">
     <header>
+      <!-- Banner -->
+      <div style="width:100%; height:200px; overflow:hidden; margin-bottom:12px;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReF_M8SXlcM9Zxa4duzwfsil5a9M7DZWKVkw&s" 
+             alt="Logo IUS KALLPA"
+             style="width:100%; height:100%; object-fit:cover;">
+      </div>
+
       <h1>Cronograma de Convocatoria IUSKALLPA – Septiembre 2025
         <span class="badge">Resultados: 27/09/2025</span>
       </h1>
       <div class="subtitle">
         Proceso de 15 días: Fase Específica por Comisión → Fase General (entrevista y valores institucionales).
-      </div>
-
-      <!-- Menú hamburguesa -->
-      <div class="menu-container">
-        <button class="hamburger" onclick="toggleMenu()">☰</button>
-        <div class="dropdown" id="dropdownMenu">
-          <ul>
-            <li><a href="#" onclick="verPDF('Reconocimiento de Ius Kallpa por Resolución Decanal','https://drive.google.com/file/d/1Z0XhADCB58nvIEiZGLn_q52afcaokJ78/preview')">Reconocimiento de Ius Kallpa por Resolución Decanal</a></li>
-            <li><a href="#" onclick="verPDF('Entrevista con Eugenio Raúl Zaffaroni – Revista Yachaq','https://drive.google.com/file/d/1Th7k28JfHTLPERT6FsOVy65WAPlIH-7C/preview')">Entrevista con Eugenio Raúl Zaffaroni – Revista Yachaq</a></li>
-          </ul>
-        </div>
       </div>
     </header>
 
@@ -158,6 +153,17 @@
       <button class="btn" onclick="window.print()">Imprimir / Guardar en PDF</button>
       <a class="btn" href="#" onclick="verPDF('Ficha de Inscripción','https://docs.google.com/forms/d/e/1FAIpQLSfzRk0u1qVtbd7ZIXY0dXKkD1/viewform?embedded=true')">Ficha de Inscripción</a>
       <a class="btn alt" href="#" onclick="verPDF('Reglamento','https://drive.google.com/file/d/1Pn2afLkWcLJypDRKOZ1kX16xu5OdO-b3/preview')">Ver Reglamento</a>
+
+      <!-- Menú hamburguesa -->
+      <div class="menu-container">
+        <button class="hamburger" onclick="toggleMenu()">Biblioteca de Documentos ☰</button>
+        <div class="dropdown" id="dropdownMenu">
+          <ul>
+            <li><a href="#" onclick="verPDF('Reconocimiento de Ius Kallpa por Resolución Decanal','https://drive.google.com/file/d/1Z0XhADCB58nvIEiZGLn_q52afcaokJ78/preview')">Reconocimiento de Ius Kallpa por Resolución Decanal</a></li>
+            <li><a href="#" onclick="verPDF('Entrevista con Eugenio Raúl Zaffaroni – Revista Yachaq','https://drive.google.com/file/d/1Th7k28JfHTLPERT6FsOVy65WAPlIH-7C/preview')">Entrevista con Eugenio Raúl Zaffaroni – Revista Yachaq</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- Cronograma -->
@@ -180,6 +186,7 @@
 
     <!-- Visor -->
     <div id="visorContainer">
+      <button class="btn alt" id="volverBtn" onclick="volverCronograma()">← Volver al Cronograma</button>
       <div id="visorTitle"></div>
       <iframe id="visorPDF"></iframe>
     </div>
@@ -205,10 +212,15 @@
 
   function verPDF(titulo,url){
     document.getElementById('cronogramaContainer').style.display='none';
-    document.getElementById('toolbar').style.display='none';
     document.getElementById('visorContainer').style.display='block';
     document.getElementById('visorTitle').textContent=titulo;
     document.getElementById('visorPDF').src=url;
+  }
+
+  function volverCronograma(){
+    document.getElementById('visorContainer').style.display='none';
+    document.getElementById('cronogramaContainer').style.display='block';
+    document.getElementById('visorPDF').src='';
   }
 </script>
 </body>
