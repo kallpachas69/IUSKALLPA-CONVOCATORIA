@@ -110,13 +110,27 @@
       header{border:0;background:#fff;padding:0}
       h1{font-size:1.3rem}
     }
+
+    footer {
+      margin-top:40px;
+      padding:20px;
+      text-align:center;
+      font-size:0.9rem;
+      color:var(--muted);
+      border-top:1px solid #ddd;
+    }
+    footer .quote {
+      font-style:italic;
+      margin-bottom:10px;
+      display:block;
+      color:#333;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-  <!-- Logo a todo el ancho -->
-  <div style="width:100%; height:200px; overflow:hidden; margin-bottom:12px;">
+   <div style="width:100%; height:200px; overflow:hidden; margin-bottom:12px;">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReF_M8SXlcM9Zxa4duzwfsil5a9M7DZWKVkw&s" 
          alt="Logo IUS KALLPA"
          style="width:100%; height:100%; object-fit:cover;">
@@ -133,7 +147,7 @@
     <div class="toolbar">
       <button class="btn" onclick="window.print()">Imprimir / Guardar en PDF</button>
       <a class="btn" href="https://forms.gle/wNbYWowLfpLvJdFh9" target="_blank">Ficha de Inscripción</a>
-      <a class="btn alt" href="https://drive.google.com/file/d/1Pn2afLkWcLJypDRKOZ1kX16xu5OdO-b3/view?usp=drive_link" target="_blank">Ver Reglamento</a>
+      <a class="btn alt" href="https://drive.google.com/file/d/1Pn2afLkWcLJypDRKOZ1kX16xu5OdO-b3/view?usp=sharing" target="_blank">Ver Reglamento</a>
     </div>
 
     <table id="cronograma">
@@ -190,10 +204,10 @@
     </table>
 
     <p class="note">* Las fechas están expresadas en formato DD/MM/AAAA (zona horaria: América/Lima). Cualquier ajuste será comunicado por los canales oficiales.</p>
-    <p class="foot">IUSKALLPA – Investigación Jurídica, UNSA.</p>
+    <p class="foot">IUSKALLPA – Investigación Jurídica.</p>
 
     <div class="social">
-      <h2>Para mayor información no olvides seguirnos en nuestras redes sociales</h2>
+      <h2>Para mayor información estas son nuestras redes sociales</h2>
       <a href="https://www.facebook.com/profile.php?id=100088885685421" target="_blank">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMW9AB13KyfzyL04pPQ6MNSttPFG3O06v9ig&s" alt="Facebook"> Facebook
       </a>
@@ -204,8 +218,12 @@
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0JwUVS-cSOFbnCkKXY4b8yHx5Rbuf4Vd9Mw&s" alt="Correo"> kallpachas@gmail.com
       </a>
     </div>
- <footer>
-  &copy; 2025 IUS KALLPA - Todos los derechos reservados
-</footer>
+
+    <footer>
+      <span class="quote">“El derecho se transforma constantemente. Si no sigues sus pasos, serás cada día un poco menos abogado.” – Eduardo Couture</span><br>
+      &copy; 2025 IUS KALLPA – Todos los derechos reservados.
+    </footer>
+  </div>
 </body>
 </html>
+
